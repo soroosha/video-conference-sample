@@ -40,20 +40,20 @@ fi
 docker-compose up --build -d
 
 echo -e "${ORANGE}\xE2\x98\x85 Waiting for Django to start ...${NOCOLOR}"
-while docker exec -t video-conf-app_backend_1 nc -z localhost 80 ; [ $? -ne 0 ]; do
+while docker exec -t video-conference-sample_backend_1 nc -z localhost 80 ; [ $? -ne 0 ]; do
   sleep 0.1
 done
 
 # echo -e "${ORANGE}\xE2\x98\x85 Run backend tests ...${NOCOLOR}"
-# docker exec -t sample-fs-app_backend_1 pipenv run python app/manage.py test
+# docker exec -t video-conference-sample_backend_1 pipenv run python app/manage.py test
 
 # echo -e "${ORANGE}\xE2\x98\x85 Run frontend tests ...${NOCOLOR}"
-# docker exec -t -e CI=true sample-fs-app_backend_1 npm test
+# docker exec -t -e CI=true video-conference-sample_backend_1 npm test
 
 if [ "$reset_db" -eq 1 ]; then
   # echo -e "${ORANGE}\xE2\x98\x85 Inserting initial data...${NOCOLOR}"
   # # default fixtures data will be used (e.g. <app>/fixtures/)
-  # docker exec -it video-conf-app_backend_1 pipenv run python app/manage.py loaddata initial_posts
+  # docker exec -it video-conference-sample_backend_1 pipenv run python app/manage.py loaddata initial_posts
 
   echo -e "\n${GREEN}\xE2\x9C\x93 Development services restarted with fresh database. ${NOCOLOR}"
 else

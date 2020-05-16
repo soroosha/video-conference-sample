@@ -6,10 +6,10 @@ services:
     build: ./backend
     volumes:
       - ./backend:/usr/src/app/
-    ports:
-      - 8080:80 
+    # ports: # for localhost setup
+    #   - 8080:80 
     environment:
-      - HOST=localhost
+      # - HOST= <e.g. localhost, api.something.com>
       - CHANNELS_REDIS_HOST=redis
 
   # redis channel layer
@@ -21,9 +21,9 @@ services:
       context: ./frontend
       dockerfile: Dockerfile.release
       args:
-        - BACKEND_HOST=localhost:8080
+        # - BACKEND_HOST= <e.g. localhost, api.something.com>
     volumes:
       - ./frontend:/app
       - '/app/node_modules'
-    ports:
-      - 80:80
+    # ports: # for localhot setup
+    #   - 80:80
