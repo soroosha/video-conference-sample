@@ -1,0 +1,29 @@
+FROM node:12.2.0-alpine as build
+
+WORKDIR /app
+
+# install and cache app dependencies
+COPY package.json package-lock.json ./
+RUN npm install --silent
+
+# need to rebuild node-sass due to sass bug that sometimes fails to compile
+RUN npm rebuild node-sass
+
+COPY . .
+
+# apply environment vars for react build 
+ARG BACKEND_HOST
+ENV REACT_APP_BACKEND_HOST=$BACKEND_HOST
+
+# build react app
+RUN npm run build
+
+# remove source maps from release image
+RUN find ./build -name "*.map" -type f -delete
+
+# setup nginx with single-page-app config (otherwise non-root urls wont work)
+FROM nginx:1.16.0-alpine
+COPY --from=build /app/build /usr/share/nginx/html
+
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]

@@ -1,0 +1,44 @@
+@import '../../constants/base.scss';
+
+.navigationBar {
+  height: 48px;
+  transition: background $themeTransitionMethod, border-color $themeTransitionMethod;
+
+  > div {
+    transition: color $themeTransitionMethod;
+    font-size:22px;
+    font-weight:900;
+    line-height:48px;
+    width: $maxContentWidth;
+    margin:0 auto;
+  }
+
+  /* theming */
+  &.dark {
+    background: $darkBackground;
+    border-bottom: 1px solid #333;
+
+    > div {
+      color: $darkForeground;
+    }
+  }
+  &.light {
+    background: $lightBackground;
+    border-bottom: 1px solid #ddd;
+
+    > div {
+      color: $lightForeground;
+    }
+  }
+}
+
+.switch {
+  // $self 
+  float: right;
+  margin-top:13px;
+}
+:global{ 
+  :local(.switch):not(.ant-switch-checked) .ant-switch-inner{
+    margin:0 8px 0 24px;
+  }
+}

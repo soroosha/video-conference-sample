@@ -1,0 +1,29 @@
+# For development environments only
+version: '3.7'
+
+services:
+  backend:
+    build: ./backend
+    volumes:
+      - ./backend:/usr/src/app/
+    ports:
+      - 8080:80 
+    environment:
+      - HOST=localhost
+      - CHANNELS_REDIS_HOST=redis
+
+  # redis channel layer
+  redis:
+    image: redis:5
+      
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.release
+      args:
+        - BACKEND_HOST=localhost:8080
+    volumes:
+      - ./frontend:/app
+      - '/app/node_modules'
+    ports:
+      - 80:80

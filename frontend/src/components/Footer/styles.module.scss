@@ -1,0 +1,38 @@
+@import '../../constants/base.scss';
+
+.footer {
+  min-height:320px;
+  border-top:12px #E8BE02 solid;
+  transition: background $themeTransitionMethod;
+  padding-top:20px;
+
+  > div {
+    width: $maxContentWidth;
+    margin:0 auto;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    h3,h4 {
+      transition: color $themeTransitionMethod;
+    }
+    
+    h4 {
+      margin:0px;
+    }
+  }
+
+  /* theming */
+  &.dark {
+    background:$darkBackground;
+    h3,h4 {
+      color: $darkForeground;
+    }
+  }
+  &.light {
+    background: $lightBackground;
+    h3,h4 {
+      color: $lightForeground;
+    }
+  }
+}

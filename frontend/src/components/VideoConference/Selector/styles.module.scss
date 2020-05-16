@@ -1,0 +1,33 @@
+@import '../../../constants/base.scss';
+
+.conferenceSelector {
+  width:200px;
+  margin-right:25px;
+
+  .title {
+    padding:15px;
+    font-size:18px;
+    text-align:center;
+    margin-bottom:0px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+
+  /* theming */
+  &.dark {
+    .title {
+      color: $darkForeground;
+    }
+  }
+  &.light {
+    .title {
+      color: $lightForeground;
+    }
+  }
+}
+.roomButton {
+  display:block;
+  width:100%;
+  text-align:left;
+  margin-bottom:5px;
+}

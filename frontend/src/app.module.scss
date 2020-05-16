@@ -1,0 +1,54 @@
+@import "constants/base.scss";
+
+.app {
+  // color: $darkForeground;
+  display:flex;
+  flex-direction: column;
+  height:100vh;
+  transition: background $themeTransitionMethod;
+
+  &.dark {
+    background: rgb(138, 136, 141);
+  }
+  &.light {
+    background: #ccc;
+  }
+}
+
+.content {
+  flex-grow:1;
+  display:flex;
+  flex-direction:column;
+  overflow: auto;
+
+  > *:first-child{
+    flex:auto;
+  }
+}
+
+h1, h2, h3 {
+  font-weight:900;
+}
+h1 {
+  font-size: 100px;
+  color: #4F4D53;
+}
+h2 {
+  font-size: 64px;
+  color: #E8BE02;
+}
+h3 {
+  font-size: 20px;
+  color: #E8BE02;
+}
+h4, p {
+  font-weight: 400;
+}
+h4 {
+  font-size: 14px;
+  color: #FFFFFF;
+}
+p {
+  font-size: 20px;
+  color: #4F4D53;
+}
