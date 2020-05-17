@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { Button, Alert } from 'antd';
-import { VideoCameraOutlined, AudioOutlined, AudioMutedOutlined } from '@ant-design/icons';
+import { AudioOutlined, AudioMutedOutlined } from '@ant-design/icons';
 
 import { ThemeContext } from '../../App'
 
@@ -9,7 +9,6 @@ import Selector from "./Selector"
 import Conference from "./Conference"
 
 import styles from "./styles.module.scss"
-import { useCacheErrors } from "antd/lib/form/util";
 
 let mediaRetryTimeout
 

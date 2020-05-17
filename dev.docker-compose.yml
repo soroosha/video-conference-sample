@@ -6,6 +6,8 @@ services:
     build: ./backend
     volumes:
       - ./backend:/usr/src/app/
+    ports:
+      - 80:80 
     environment:
       # - HOST= <e.g. localhost, api.something.com>
       - CHANNELS_REDIS_HOST=redis
@@ -17,9 +19,11 @@ services:
   frontend:
     build:
       context: ./frontend
-      dockerfile: Dockerfile.release
-      args:
-        # - WS_ROOT_URL= <e.g. ws://localhost, wss://api.something.com>
+      dockerfile: Dockerfile
+    environment:
+      - REACT_APP_WS_ROOT_URL=ws://localhost
     volumes:
       - ./frontend:/app
       - '/app/node_modules'
+    ports:
+      - 3000:3000

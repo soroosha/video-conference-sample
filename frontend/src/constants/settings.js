@@ -1,5 +1,5 @@
 export default {
   BACKEND:{
-    HOST: process.env.REACT_APP_BACKEND_HOST
+    WS_ROOT_URL: process.env.REACT_APP_WS_ROOT_URL
   }
 }

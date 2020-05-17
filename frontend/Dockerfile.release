@@ -12,8 +12,8 @@ RUN npm rebuild node-sass
 COPY . .
 
 # apply environment vars for react build 
-ARG BACKEND_HOST
-ENV REACT_APP_BACKEND_HOST=$BACKEND_HOST
+ARG WS_ROOT_URL
+ENV REACT_APP_WS_ROOT_URL=$WS_ROOT_URL
 
 # build react app
 RUN npm run build
