@@ -35,7 +35,7 @@ export default class ConferenceRoom {
     this.peers = this.peers.filter(peer => peer.id !== peer_id)
   }
   joinRoom(){
-    this.socket = new WebSocket(`ws://${settings.BACKEND.HOST}/ws/conference/room/${this.room.id}/`)
+    this.socket = new WebSocket(`wss://${settings.BACKEND.HOST}/ws/conference/room/${this.room.id}/`)
     this.socket.onopen = this.onSocketOpen.bind(this)
     this.socket.onmessage = this.onSocketMessage.bind(this)
     this.socket.onerror = this.onSocketError.bind(this)
