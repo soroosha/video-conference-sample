@@ -165,12 +165,14 @@ export default class ConferenceRoom {
     if(data.action==='DID_RECEIVE_ICE_CANDIDATE'){
       console.log('DID_RECEIVE_ICE_CANDIDATE')
       // console.log(`received ICE candidate from ${data.from_peer}`)
-      let peer = this.peers.find(peer => peer.id === data.from_peer) || this.getPeerSDP(data.from_peer)
-      if(peer){
-        const ice_candidate = JSON.parse(data.ice_candidate)
-        peer.connection.addIceCandidate(ice_candidate).catch((err)=>{
-          console.error(ice_candidate, err)
-        })
+      const ice_candidate = JSON.parse(data.ice_candidate)
+      if(ice_candidate){
+        let peer = this.peers.find(peer => peer.id === data.from_peer) || this.getPeerSDP(data.from_peer)
+        if(peer){
+          peer.connection.addIceCandidate(ice_candidate).catch((err)=>{
+            console.error(ice_candidate, err)
+          })
+        }
       }
     }
 
